@@ -17,7 +17,12 @@ const CartInput: React.FC<CartInputProps> = ({ data }) => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const updatedCart = parseInt(e.target.value);
 
-    if (!isNaN(updatedCart) && updatedCart > 0 && updatedCart <= product?.quantity!) {
+    if (
+      product &&
+      !isNaN(updatedCart) &&
+      updatedCart > 0 &&
+      updatedCart <= product.quantity
+    ) {
       updateItem(data.id.toString(), updatedCart);
     }
   };

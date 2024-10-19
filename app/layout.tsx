@@ -3,7 +3,6 @@ import { Urbanist } from "next/font/google";
 
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
-import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 import ModalProvider from "@/providers/modal-provider";
 import ToastProvider from "@/providers/toast-provider";

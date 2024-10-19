@@ -1,6 +1,6 @@
 "use client";
 import { Product } from "@/type";
-import React, { useEffect } from "react";
+import React from "react";
 import NoResult from "./no-result";
 import ProductCard from "./product-card";
 

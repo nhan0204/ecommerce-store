@@ -8,9 +8,7 @@ import { useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
-interface SummaryProps {}
-
-const Summary: React.FC<SummaryProps> = () => {
+const Summary: React.FC = () => {
   const [isMounted, setIsMounted] = useState(false);
   const items = useCart((state) => state.items);
   const removeAll = useCart((state) => state.removeAll);
@@ -55,7 +53,7 @@ const Summary: React.FC<SummaryProps> = () => {
 
       <div className="mt-6 space-y-4 border-t border-gray-200 pt-4">
         {items.map((item) => (
-          <div className="flex items-center justify-between">
+          <div key={item.id.toString()} className="flex items-center justify-between">
             <div className="flex gap-x-2">
               <div className="text-base font-medium text-gray-900">
                 {item.name}

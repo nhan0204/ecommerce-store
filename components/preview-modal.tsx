@@ -6,9 +6,8 @@ import usePreviewModal from "@/hooks/use-preview-modal";
 import React from "react";
 import Gallery from "./gallery";
 
-interface PreviewModalProps {}
 
-const PreviewModal: React.FC<PreviewModalProps> = () => {
+const PreviewModal: React.FC = () => {
   const previewModal = usePreviewModal();
   const product = usePreviewModal((state) => state.data);
 

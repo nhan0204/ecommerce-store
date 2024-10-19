@@ -1,7 +1,7 @@
 "use client"
 import { cn } from "@/lib/utils";
 import { Billboard as BillboardType } from "@/type";
-import React, { useEffect } from "react";
+import React from "react";
 
 interface BillboardProps {
   data: BillboardType;

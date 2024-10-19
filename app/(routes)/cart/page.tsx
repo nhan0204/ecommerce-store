@@ -1,18 +1,13 @@
 "use client";
 import Container from "@/components/ui/container";
 import useCart from "@/hooks/use-cart";
-import { MenuItems } from "@headlessui/react";
-import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import CartItem from "./components/cart-item";
 import Summary from "./components/summary";
 
-interface CartPageProps {}
-
-const CartPage: React.FC<CartPageProps> = () => {
+const CartPage: React.FC = () => {
   const [isMounted, setIsMounted] = useState(false);
   const cart = useCart();
-  const router = useRouter();
 
   useEffect(() => {
     setIsMounted(true);

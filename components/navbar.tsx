@@ -6,9 +6,8 @@ import NavbarAction from "./navbar-action";
 import getCategories from "@/actions/get-categories";
 import getStore from "@/actions/get-store";
 
-interface navbarProps {}
 
-const navbar: React.FC<navbarProps> = async () => {
+const navbar: React.FC = async () => {
   const store: Store = await getStore();
   const categories: Category[] = await getCategories();
 

@@ -1,7 +1,6 @@
 import getStore from "@/actions/get-store";
-interface FooterProps {}
 
-const Footer: React.FC<FooterProps> = async () => {
+const Footer: React.FC = async () => {
   const store = await getStore();
   
   return (
