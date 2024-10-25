@@ -9,12 +9,13 @@ export const revalidate = 0;
 
 const HomePage = async () => {
   const billboard: BillboardType = await getBillboard(
-    "c1137fcf-0d24-4e00-a66d-db9f75be1d90"
+    "3d5fb77e-e3d8-46e0-9918-57a11f32242c"
   );
 
-  console.log(billboard);
-
-  const products: Product[] = await getProducts({ isFeatured: true, isArchived: false });
+  const products: Product[] = await getProducts({
+    isFeatured: true,
+    isArchived: false,
+  });
 
   return (
     <Container>

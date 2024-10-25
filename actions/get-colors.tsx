@@ -5,7 +5,7 @@ const getColors = async (): Promise<Color[]> => {
   try {
     const res = await fetch(URL, {
       method: "GET",
-      cache: "no-store",
+      cache: "no-cache",
     });
     return res.json();
   } catch (error) {
