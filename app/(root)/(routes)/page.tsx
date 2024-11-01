@@ -1,14 +1,15 @@
 import getBillboard from "@/actions/get-billboard";
 import getProducts from "@/actions/get-products";
+import Billboard from "@/components/billboard";
 import Container from "@/components/ui/container";
 import ProductList from "@/components/ui/product-list";
-import { Product } from "@/type";
+import { Billboard as BillboardType, Product } from "@/type";
 
 export const revalidate = 0;
 
 const HomePage = async () => {
-  await getBillboard(
-    "23feb2bc-550e-4b5c-b0db-dfeff1f720ef"
+  const billboard: BillboardType = await getBillboard(
+    ""
   );
 
   const products: Product[] = await getProducts({
@@ -19,10 +20,10 @@ const HomePage = async () => {
   return (
     <Container>
       <div className="space-y-10 pb-10">
-        {/* <Billboard data={billboard} /> */}
+        {billboard && <Billboard data={billboard} />}
       </div>
       <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8 mb-10">
-        <ProductList title="Featured Products" items={products} />
+        {products && <ProductList title="Featured Products" items={products} />}
       </div>
     </Container>
   );

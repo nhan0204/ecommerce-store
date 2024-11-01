@@ -38,25 +38,32 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
   return (
     <div className="bg-white">
       <Container>
-        <Billboard data={category.billboard} dark={category.name == "Sedan"} />
+        {category && (
+          <Billboard
+            data={category.billboard}
+            dark={category.name == "Sedan"}
+          />
+        )}
         <div className="px-4 sm:px-6 lg:px-8 pb-24">
-          <MobileFilter sizes={sizes} colors={colors} />
+          {sizes && colors && <MobileFilter sizes={sizes} colors={colors} />}
           {/* Desktop filters */}
-          <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">
-            <div className="hidden flex-col lg:block">
-              <Filter name="Sizes" filterKey="sizeId" data={sizes} />
-              <Filter name="Colors" filterKey="colorId" data={colors} />
-            </div>
+          {sizes && colors && (
+            <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">
+              <div className="hidden flex-col lg:block">
+                <Filter name="Sizes" filterKey="sizeId" data={sizes} />
+                <Filter name="Colors" filterKey="colorId" data={colors} />
+              </div>
 
-            <div className="mt-6 lg:col-span-4 lg:mt-0">
-              {products.length === 0 && <NoResult />}
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                {products.map((item) => (
-                  <ProductCard key={item.id.toString()} data={item} />
-                ))}
+              <div className="mt-6 lg:col-span-4 lg:mt-0">
+                {products.length === 0 && <NoResult />}
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                  {products.map((item) => (
+                    <ProductCard key={item.id.toString()} data={item} />
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </Container>
     </div>
