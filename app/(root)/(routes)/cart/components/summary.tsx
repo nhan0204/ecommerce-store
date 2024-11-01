@@ -19,7 +19,7 @@ const Summary: React.FC = () => {
 
   const onCheckOut = async () => {
     const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
+      `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_STORE_ID}/checkout`,
       {
         cart: items.map((item) => ({
           id: item.id,
