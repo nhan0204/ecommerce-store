@@ -1,16 +1,15 @@
-// import getBillboard from "@/actions/get-billboard";
+import getBillboard from "@/actions/get-billboard";
 import getProducts from "@/actions/get-products";
 import Container from "@/components/ui/container";
 import ProductList from "@/components/ui/product-list";
 import { Product } from "@/type";
-// import { Billboard as BillboardType, Product } from "@/type";
 
 export const revalidate = 0;
 
 const HomePage = async () => {
-  // const billboard: BillboardType = await getBillboard(
-  //   "23feb2bc-550e-4b5c-b0db-dfeff1f720ef"
-  // );
+  await getBillboard(
+    "23feb2bc-550e-4b5c-b0db-dfeff1f720ef"
+  );
 
   const products: Product[] = await getProducts({
     isFeatured: true,
