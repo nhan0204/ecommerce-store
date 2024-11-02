@@ -18,8 +18,6 @@ const MobileFilter: React.FC<MobileFilterProps> = ({ sizes, colors }) => {
   const onOpen = () => setOpen(true);
   const onClose = () => setOpen(false);
 
-  console.log(open);
-
   return (
     <Button
       onClick={onOpen}

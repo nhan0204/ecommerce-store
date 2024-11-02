@@ -2,11 +2,13 @@
   "name": "ecommerce-store",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start -p 3001",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prebuild": "node prebuild.js"
   },
   "dependencies": {
     "@clerk/clerk-js": "^5.26.5",
@@ -18,6 +20,7 @@
     "class-variance-authority": "^0.7.0",
     "clerk": "^0.8.3",
     "clsx": "^2.1.1",
+    "dotenv": "^16.4.5",
     "lucide-react": "^0.453.0",
     "next": "14.2.15",
     "prisma": "^5.21.1",

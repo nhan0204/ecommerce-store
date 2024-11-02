@@ -15,8 +15,6 @@ const PreviewModal: React.FC = () => {
     return null;
   }
 
-  console.log(product);
-
   return (
     <Modal open={previewModal.isOpen} onClose={previewModal.onClose}>
       <div className="items-start grid w-full grid-cols-1 lg:grid-cols-12  gap-x-6 lg:gap-x-8 lg:gap-y-8 ">

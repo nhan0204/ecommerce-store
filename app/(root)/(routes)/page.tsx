@@ -8,9 +8,9 @@ import { Billboard as BillboardType, Product } from "@/type";
 export const revalidate = 0;
 
 const HomePage = async () => {
-  const billboard: BillboardType = await getBillboard(
-    ""
-  );
+  const billboard: BillboardType[] = await getBillboard({
+    isHomePage: true,
+  });
 
   const products: Product[] = await getProducts({
     isFeatured: true,
@@ -20,7 +20,7 @@ const HomePage = async () => {
   return (
     <Container>
       <div className="space-y-10 pb-10">
-        {billboard && <Billboard data={billboard} />}
+        {billboard.length > 0 && <Billboard data={billboard[0]} />}
       </div>
       <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8 mb-10">
         {products && <ProductList title="Featured Products" items={products} />}
