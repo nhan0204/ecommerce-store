@@ -1,40 +1,15 @@
 import dotenv from "dotenv";
-import qs from "query-string";
 import fs from "fs/promises";
 import path from "path";
 
 dotenv.config();
 
-const URL = `${process.env.NEXT_PUBLIC_API_URL}stores`;
 const TOKEN = process.env.VERCEL_API_TOKEN;
 
 const VERCEL_URL = `${process.env.VERCEL_PROJECT_API_URL}${process.env.VERCEL_PROJECT_ID}/env/${process.env.VERCEL_ENV_KEY}`;
 
-const getStoreId = async () => {
+const updateStoreId = async (storeId) => {
   try {
-    console.log(URL);
-
-    const url = qs.stringifyUrl({
-      url: URL,
-      query: {
-        name: "Carmar",
-      },
-    });
-
-    console.log(url);
-
-    const res = await fetch(url, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${TOKEN}`,
-      },
-    });
-
-    const data = await res.json();
-    const value = data.id;
-
-    console.log(VERCEL_URL);
-
     const patch = await fetch(VERCEL_URL, {
       method: "PATCH",
       headers: {
@@ -42,15 +17,15 @@ const getStoreId = async () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        value: value,
+        value: storeId,
         comment: "Updated environment variable for testing",
         target: ["production", "preview"],
       }),
     });
 
-    console.log('Status: ',patch.status);
+    console.log("Status: ", patch.status);
 
-    const envPath = path.join(process.cwd(), '.env');
+    const envPath = path.join(process.cwd(), ".env");
     const envContent = `\nNEXT_PUBLIC_STORE_ID=${data.id}`;
     await fs.appendFile(envPath, envContent);
 
@@ -60,4 +35,15 @@ const getStoreId = async () => {
   }
 };
 
-getStoreId();
+const handlePostRequest = async(req, res) => {
+  const {storeId} = req.body;
+
+  if (!storeId) {
+    return res.status(400).json({ error: 'StoreId is required'});
+  }
+
+  const status = await updateStoreId(storeId);
+  return res.status(200).json({ message: status});
+}
+
+handlePostRequest();
