@@ -39,7 +39,8 @@ const handleWebhookRequest = async (req, res) => {
   const { storeId } = req.body;
 
   if (!storeId) {
-    return res.status(400).json({ error: "StoreId is required" });
+    console.error("storeId is required");
+    return res.status(400).json({ error: "storeId is required" });
   }
 
   const status = await updateStoreId(storeId);
