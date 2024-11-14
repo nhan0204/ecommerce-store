@@ -19,7 +19,7 @@ const PreviewModal: React.FC = () => {
     <Modal open={previewModal.isOpen} onClose={previewModal.onClose}>
       <div className="items-start grid w-full grid-cols-1 lg:grid-cols-12  gap-x-6 lg:gap-x-8 lg:gap-y-8 ">
         <div className="sm:col-span-4 lg:col-span-5">
-          <Gallery images={product.images} />
+          <Gallery images={product.images} isHorizontal={product.isHorizontal}/>
         </div>
         <div className="sm:cols-span-8 lg:col-span-7 sm:mt-4">
           <Info data={product} />
