@@ -27,6 +27,7 @@ export interface Product {
   cart?: number;
   isArchived: boolean;
   isFeatured: boolean;
+  isHorizontal: boolean;
   size: Size;
   color: Color;
   images: Image[];

@@ -3,6 +3,7 @@
 import Currency from "@/components/ui/currency";
 import useCart from "@/hooks/use-cart";
 import usePreviewModal from "@/hooks/use-preview-modal";
+import { cn } from "@/lib/utils";
 import { Product } from "@/type";
 import { Expand, ShoppingCart } from "lucide-react";
 import Image from "next/image";
@@ -12,9 +13,10 @@ import IconButton from "./icon-button";
 
 interface ProductCardProps {
   data: Product;
+  isHorizontal: boolean;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ data, isHorizontal }) => {
   const router = useRouter();
   const previewModal = usePreviewModal();
   const cart = useCart();
@@ -40,7 +42,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
       onClick={handleClick}
       className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4"
     >
-      <div className="aspect-[2/1] rounded-xl bg-gray-100 relative">
+      <div
+        className={cn(
+          ` rounded-xl bg-gray-100 relative`,
+          isHorizontal ? "aspect-[2/1]" : "aspect-[1/1]"
+        )}
+      >
         <Image fill src={data.images[0].url} alt="image" />
         <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
           <div className="flex gap-x-6 justify-center">

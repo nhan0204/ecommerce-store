@@ -26,7 +26,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
         <div className="px-4 py-10 sm:px-6 lg:px-8">
           <div className="md:grid md:grid-cols-2 md:items-start md:gap-x-8">
             {/* Gallery */}
-            {product.images && <Gallery images={product.images} />}
+            {product.images && <Gallery images={product.images} isHorizontal={product.isHorizontal} />}
             <div className="mt-10 px-4 sm:mt-16 sm:px-0 md:mt-0">
               <Info data={product}/>
             </div>

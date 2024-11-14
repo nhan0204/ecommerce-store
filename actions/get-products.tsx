@@ -7,6 +7,7 @@ interface Query {
   colorId?: string;
   isFeatured?: boolean;
   isArchived?: boolean;
+  isHorizontal?: boolean;
 }
 
 const URL = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_STORE_ID}/products`;
@@ -21,6 +22,7 @@ const getProducts = async (query: Query): Promise<Product[]> => {
         categoryId: query.categoryId,
         isFeatured: query.isFeatured,
         isArchived: query.isArchived,
+        isHorizontal: query.isHorizontal,
       },
     });
 
