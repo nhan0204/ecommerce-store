@@ -5,7 +5,6 @@ const getSizes = async (): Promise<Size[]> => {
   try {
     const res = await fetch(URL, {
       method: "GET",
-      cache: "no-cache",
     });
     return res.json();
   } catch (error) {

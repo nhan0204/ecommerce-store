@@ -6,7 +6,6 @@ const getCategory = async (id: string): Promise<CategoryType> => {
   try {
     const res = await fetch(`${URL}/${id}`, {
       method: "GET",
-      cache: "no-cache",
     });
     return res.json();
   } catch (error) {

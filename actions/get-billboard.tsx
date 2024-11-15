@@ -18,7 +18,6 @@ const getBillboard = async (query: Query): Promise<BillboardType[]> => {
 
     const res = await fetch(url, {
       method: "GET",
-      cache: "no-cache",
     });
 
     return res.json();
