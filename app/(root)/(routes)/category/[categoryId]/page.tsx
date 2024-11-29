@@ -41,7 +41,8 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
         {category && (
           <Billboard
             data={category.billboard}
-            dark={category.name == "Sedan"}
+            dark={category.billboard.isDarkLabel}
+            hasLabel={category.billboard.hasLabel}
           />
         )}
         <div className="px-4 sm:px-6 lg:px-8 pb-24">
@@ -58,7 +59,7 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
                 {products.length === 0 && <NoResult />}
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                   {products.map((item) => (
-                    <ProductCard key={item.id.toString()} data={item} isHorizontal={item.isHorizontal}/>
+                    <ProductCard key={item.id.toString()} data={item} isHorizontal={item.isHorizontal} />
                   ))}
                 </div>
               </div>

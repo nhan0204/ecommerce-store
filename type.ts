@@ -8,6 +8,8 @@ export interface Billboard {
   label: string;
   imageUrl: string;
   isHomePage: boolean;
+  isDarkLabel: boolean;
+  hasLabel: boolean;
 }
 
 export interface Category {

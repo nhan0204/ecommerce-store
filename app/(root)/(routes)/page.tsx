@@ -20,7 +20,7 @@ const HomePage = async () => {
   return (
     <Container>
       <div className="space-y-10 pb-10">
-        {billboard.length > 0 && <Billboard data={billboard[0]} />}
+        {billboard.length > 0 && <Billboard data={billboard[0]} dark={billboard[0].isDarkLabel}/>}
       </div>
       <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8 mb-10">
         {products && <ProductList title="Featured Products" items={products} />}

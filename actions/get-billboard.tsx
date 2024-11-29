@@ -3,6 +3,8 @@ import qs from "query-string";
 
 interface Query {
   isHomePage?: boolean;
+  isDarkLabel?: boolean;
+  hasLabel?: boolean;
 }
 
 const URL = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_STORE_ID}/billboards`;
@@ -13,11 +15,14 @@ const getBillboard = async (query: Query): Promise<BillboardType[]> => {
       url: URL,
       query: {
         isHomePage: query.isHomePage,
+        isDarkLabel: query.isDarkLabel,
+        hasLabel: query.hasLabel,
       },
     });
 
     const res = await fetch(url, {
       method: "GET",
+      cache: 'no-cache',
     });
 
     return res.json();
