@@ -18,6 +18,7 @@ const Summary: React.FC = () => {
   items.forEach((item) => (totalPrice += item.cart! * Number(item.price)));
 
   const onCheckOut = async () => {
+    console.log(`${process.env.NEXT_PUBLIC_API_URL}${process.env.NEXT_PUBLIC_STORE_ID}/checkout`);
     const response = await axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}${process.env.NEXT_PUBLIC_STORE_ID}/checkout`,
       {
