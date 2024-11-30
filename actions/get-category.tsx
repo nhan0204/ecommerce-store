@@ -4,9 +4,12 @@ const URL = `${process.env.NEXT_PUBLIC_API_URL}${process.env.NEXT_PUBLIC_STORE_I
 
 const getCategory = async (id: string): Promise<CategoryType> => {
   try {
-    console.log(`${URL}/${id}`);
+
     const res = await fetch(`${URL}/${id}`, {
       method: "GET",
+      headers: {
+        'Cache-Control': "public, max-age=150",
+      }
     });
     return res.json();
   } catch (error) {
