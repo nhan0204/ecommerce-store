@@ -8,7 +8,7 @@ const getCategory = async (id: string): Promise<CategoryType> => {
     const res = await fetch(`${URL}/${id}`, {
       method: "GET",
       headers: {
-        'Cache-Control': "public, max-age=150",
+        'Cache-Control': "public, max-age=100",
       }
     });
     return res.json();
