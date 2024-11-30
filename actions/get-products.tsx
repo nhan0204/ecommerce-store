@@ -26,8 +26,13 @@ const getProducts = async (query: Query): Promise<Product[]> => {
       },
     });
 
+    const cacheOption = query.categoryId ? "no-cache" : "public, max-age=150";
+
     const res = await fetch(url, {
       method: "GET",
+      headers: {
+        'Cache-Control': cacheOption,
+      }
     });
 
     return res.json();
