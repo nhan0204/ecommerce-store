@@ -18,6 +18,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
 
   const suggestedProducts: Product[] = await getProducts({
     categoryId: product.category.id,
+    isArchived: false,
   });
 
   return (

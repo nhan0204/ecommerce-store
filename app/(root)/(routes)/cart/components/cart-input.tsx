@@ -3,11 +3,11 @@
 import { Input } from '@/components/ui/input';
 import useCart from '@/hooks/use-cart';
 import { Product } from '@/type';
-import React, { ChangeEvent } from 'react' 
+import React, { ChangeEvent } from 'react';
 
 interface CartInputProps {
   data: Product;
-} 
+}
 
 const CartInput: React.FC<CartInputProps> = ({ data }) => {
   const getItem = useCart((state) => state.getItem);
@@ -16,23 +16,22 @@ const CartInput: React.FC<CartInputProps> = ({ data }) => {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const updatedCart = parseInt(e.target.value);
+    const item = data.id.toString();
 
-    if (
-      product &&
-      !isNaN(updatedCart) &&
-      updatedCart > 0 &&
-      updatedCart <= product.quantity
-    ) {
-      updateItem(data.id.toString(), updatedCart);
-    }
+    if (product && updatedCart > product.quantity)
+      updateItem(item, product?.quantity)
+    else if (updatedCart <= 0)
+      updateItem(item, 1)
+    else
+      updateItem(item, updatedCart);
   };
-    return (
-      <Input
-        type="number"
-        value={product?.cart}
-        onChange={handleChange}
-      />
-    );
+  return (
+    <Input
+      type="number"
+      value={product?.cart}
+      onChange={handleChange}
+    />
+  );
 };
 
 export default CartInput;

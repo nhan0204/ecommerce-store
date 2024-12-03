@@ -1,9 +1,9 @@
 "use client";
 
+import checkout from "@/actions/checkout";
 import Button from "@/components/ui/button";
 import Currency from "@/components/ui/currency";
 import useCart from "@/hooks/use-cart";
-import axios from "axios";
 import { useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
@@ -18,17 +18,7 @@ const Summary: React.FC = () => {
   items.forEach((item) => (totalPrice += item.cart! * Number(item.price)));
 
   const onCheckOut = async () => {
-    console.log(`${process.env.NEXT_PUBLIC_API_URL}${process.env.NEXT_PUBLIC_STORE_ID}/checkout`);
-    const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_API_URL}${process.env.NEXT_PUBLIC_STORE_ID}/checkout`,
-      {
-        cart: items.map((item) => ({
-          id: item.id,
-          cart: item.cart,
-        })),
-      }
-    );
-
+    const response = await checkout(items);
     window.location = response.data.url;
   };
 
@@ -36,7 +26,7 @@ const Summary: React.FC = () => {
     setIsMounted(true);
 
     if (searchParams.get("success")) {
-        toast.success("Payment completed.");
+      toast.success("Payment completed.");
     }
 
     if (searchParams.get("canceled")) {
