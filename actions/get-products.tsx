@@ -28,10 +28,7 @@ const getProducts = async (query: Query): Promise<Product[]> => {
 
     const res = await fetch(url, {
       method: "GET",
-      // headers: {
-      //   'Cache-Control': "public, max-age=150",
-      // }
-      cache: "no-cache",
+      cache: "no-store",
     });
 
     return res.json();
